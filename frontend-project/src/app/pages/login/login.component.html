@@ -1,0 +1,114 @@
+<!-- <form class="row gy-3 mt-3" #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
+  <div *ngIf="errorMsg != ''" class="alert alert-danger">{{errorMsg}}</div>
+  <div class="alert alert-primary">
+    values {{loginForm.value | json}} <br>
+    valid {{loginForm.valid}} <br>
+    invalid {{loginForm.invalid}} <br>
+    touched {{loginForm.touched}} <br>
+    submit {{loginForm.submitted}} <br>
+  </div>
+  <div class="col-12 col-md-6">
+    <input #email="ngModel" name="email" type="text" placeholder="enter your email" class="form-control"
+      [(ngModel)]="user.email" required email (input)="errorMsg=''">
+    <div class="alert alert-danger" *ngIf="email.invalid && (loginForm.submitted || email.dirty)">
+      <div *ngIf="email.errors?.['required']">
+        email is required
+      </div>
+      <div *ngIf="email.errors?.['email']">
+        invalid Email
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <input #password="ngModel" name="password" type="password" placeholder="enter your password" class="form-control"
+      [(ngModel)]="user.password" required (input)="errorMsg=''">
+    <div class="alert alert-danger" *ngIf="password.invalid && password.dirty">
+      <div *ngIf="password.errors?.['required']">
+        password is required
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <button class="btn btn-primary">login</button>
+  </div>
+</form> -->
+
+<!-- <form class="row gy-3 mt-3"[formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+  <div class="col-12 col-md-6">
+    <input formControlName="email" name="email" type="text" placeholder="enter your email" class="form-control">
+    <div class="alert alert-danger">
+      touched: {{email?.touched}} <br>
+      invalid: {{email?.invalid}} <br>
+      valid: {{email?.valid}} <br>
+      error: {{email?.errors | json}} <br>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <input formControlName="password" name="password" type="password" placeholder="enter your password" class="form-control">
+  </div>
+  <div class="col-12 col-md-6">
+    <button class="btn btn-primary">login</button>
+  </div>
+</form> -->
+<!-- <div class="body">
+
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="text" placeholder="Enter your password" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input type="text" placeholder="Confirm your password" required>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+</div>
+</div> -->
+
+<div class="body">
+
+  <div id="container">
+    <div class="form-wrap">
+      <h1>Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" formControlName="email">
+          <div class="alert alert-danger" *ngIf="data.email.errors && submit" style="margin-top: 5px; padding: 10px;">
+            <span *ngIf="data.email.errors['required']">Required</span>
+            <span *ngIf="data.email.errors['pattern']">Enter Valid Emial</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="firstname" id="first-name" formControlName="password">
+          <div class="alert alert-danger" *ngIf="(data.password.errors || errorMsg) && submit" style="margin-top: 5px; padding: 10px;">
+            <span *ngIf="data?.password?.errors?.['required']">Required</span>
+            <span *ngIf="errorMsg !== '' ">{{errorMsg}}</span>
+          </div>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+  </div>
+  <footer>
+    <p>Don`t Have Account? <a routerLink="/register">Sign UP Here</a></p>
+  </footer>
+</div>
+</div>

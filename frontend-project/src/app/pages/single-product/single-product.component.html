@@ -1,0 +1,19 @@
+<div class="container1">
+
+  <div class="card1">
+    <div class="card-image1">
+      <img src="http://localhost:3000/{{product?.img?.replace('public', '')}}" alt="...">
+    </div>
+    <div class="card-content1">
+      <h3>{{product?.title}}</h3>
+      <p>{{product?.desc}}</p>
+      <p class="category">Categories: <span *ngFor="let category of product?.category">{{category}}</span></p>
+      <div class="buttons">
+        <div class="price">{{product?.price}}</div>
+        <button class="add-to-cart1" (click)="addToCart(product._id)" *ngIf="!isInCart(product._id)">Add To Cart</button>
+        <button class="add-to-cart1 space" (click)="removeFromCart(product._id)" *ngIf="isInCart(product._id)">Remove From Cart</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="parent" style="margin: 50px 0;">
+  <div class="alert alert-danger" *ngIf="!orders.length"
+    style="padding: 20px 30px; border-radius: 5px; color: black;"> There Is No Orders</div>
+  <div class="container1" *ngFor="let order of orders; let i = index">
+    <div class="head">
+      <div>Order <span>{{i + 1}}</span></div>
+      <div class="status">Status: <span>{{order.status}}</span>
+        <button *ngIf="isAdmin" (click)="handleStatus(i, order._id)">
+          <span *ngIf="order.status === 'pending'">Edit To Received</span>
+          <span *ngIf="order.status === 'received'">Edit To Pending</span>
+        </button>
+      </div>
+    </div>
+    <div class="card1" *ngFor="let productObj of order?.products; let i = index">
+      <div class="card-image1">
+        <img src="http://localhost:3000/{{productObj?.product?.img.replace('public', '')}}" alt="...">
+      </div>
+      <div class="card-content1">
+        <h3>{{productObj?.product?.title}}</h3>
+        <p>{{productObj?.product?.desc.substring(0, 80)}}<span *ngIf="productObj?.product?.desc?.length > 100">...</span>
+        </p>
+      </div>
+      <div class="buttons">
+        <button class="more" (click)="handleSingle(productObj?.product?._id)">More Info</button>
+        <div class="prices">
+          <div class="quant">
+            <span>quantity: {{productObj?.quantity}}</span>
+          </div>
+          <div class="price">Total: ${{showPrice(productObj?.product?.price, productObj?.quantity)}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="total-price" style="font-size: 20px;">Total Price {{order?.total_amount}}</div>
+  </div>
+</div>
+

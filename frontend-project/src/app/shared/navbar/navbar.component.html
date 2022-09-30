@@ -1,0 +1,60 @@
+
+  <div class="navigation-wrap bg-light start-header start-style">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand logo" target="_blank">
+              <img src="../../../assets/images/logo.jpg" alt="">
+              </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto py-4 py-md-0">
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 " routerLinkActive="active">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" routerLink="home" role="button" aria-haspopup="true"
+                    aria-expanded="false">Home</a>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" >
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true"
+                    aria-expanded="false" routerLinkActive="active">Categories</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" *ngFor="let category of categories" routerLink="/category/{{category?.name}}">{{category?.name}}</a>
+                  </div>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" routerLinkActive="active" *ngIf="auth.loginFlag">
+                  <a class="nav-link" routerLink="cart" >Cart</a>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" routerLinkActive="active" *ngIf="auth.loginFlag">
+                  <a class="nav-link" routerLink="orders">Orders</a>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" *ngIf="auth.isAdmin">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                    routerLinkActive="active">Dashboard</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" routerLink="/dashboard/users">Users</a>
+                    <a class="dropdown-item" routerLink="/dashboard/products">Products</a>
+                    <a class="dropdown-item" routerLink="/dashboard/categories">Categories</a>
+                    <a class="dropdown-item" routerLink="/dashboard/createAdmin">Create Admin</a>
+                    <a class="dropdown-item" routerLink="/dashboard/createUser">Create user</a>
+                  </div>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" *ngIf="!auth.loginFlag" routerLinkActive="active">
+                  <a class="nav-link" routerLink="register">Resgiter</a>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" *ngIf="!auth.loginFlag" routerLinkActive="active">
+                  <a class="nav-link" routerLink="login">Login</a>
+                </li>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" *ngIf="auth.loginFlag" (click)="handleLogout()"
+                  routerLinkActive="active">
+                  <a class="nav-link" routerLink="login">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
