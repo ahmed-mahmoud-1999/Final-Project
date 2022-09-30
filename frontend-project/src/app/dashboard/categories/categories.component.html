@@ -1,0 +1,22 @@
+<div class="cont">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories; let i = index">
+        <td>{{category._id}}</td>
+        <td>{{category.name}}</td>
+        <td>
+          <button (click)="handleDelete(category._id, i)">Delete</button>
+          <button (click)="handleEdit(category.name, category._id)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="handleCreate()">Create New Category</button>
+</div>

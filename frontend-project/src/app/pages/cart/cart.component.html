@@ -1,0 +1,25 @@
+<div class="container1">
+<div class="alert alert-danger" *ngIf="!products.length" style="padding: 20px 30px; border-radius: 5px; color: black;"> The Cart Is Empty</div>
+  <div class="card1" *ngFor="let productObj of products; let i = index">
+    <div class="card-image1">
+      <img src="http://localhost:3000/{{productObj?.product?.img.replace('public', '')}}" alt="...">
+    </div>
+    <div class="card-content1">
+      <h3>{{productObj?.product?.title}}</h3>
+      <p>{{productObj?.product?.desc.substring(0, 80)}}<span *ngIf="productObj?.product?.desc?.length > 100">...</span></p>
+    </div>
+    <div class="buttons">
+      <button class="more" (click)="handleSingle(productObj?.product?._id)">More Info</button>
+      <button class="remove" (click)="removeFromCart(productObj?.product?._id)">Remove From Cart</button>
+      <div class="prices">
+        <div class="quant">
+          <button class="add" (click)="increaseQuantity(productObj?.product?._id, i)">+</button>
+          <span>{{productObj?.quantity}}</span>
+          <button class="minus" (click)="decreaseQuantity(productObj?.product?._id, i)">-</button>
+        </div>
+        <div class="price">Total: ${{showPrice(productObj?.product?.price, productObj?.quantity)}}</div>
+      </div>
+    </div>
+  </div>
+  <button class="order" (click)="handleOrder()" *ngIf="products.length">Order Now</button>
+</div>

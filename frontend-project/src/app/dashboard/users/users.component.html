@@ -1,0 +1,23 @@
+<div class="cont">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{user._id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button (click)="handleDelete(user._id, i)">Delete</button>
+          <button (click)="handleOrders(user._id)">Orders</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

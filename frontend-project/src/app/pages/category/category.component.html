@@ -1,0 +1,21 @@
+<div class="container1">
+
+  <div class="card1" *ngFor="let product of products; let i = index">
+    <div class="card-image1">
+      <img src="http://localhost:3000/{{product?.img.replace('public', '')}}" alt="...">
+    </div>
+    <div class="card-content1">
+      <h3>{{product?.title}}</h3>
+      <p>{{product?.desc.substring(0, 100)}}<span *ngIf="product?.desc?.length > 100">...</span></p>
+      <div class="buttons">
+        <button class="add-to-cart1 space" (click)="addToCart(product._id, i)" *ngIf="!isInCart(product._id)">Add To Cart</button>
+        <button class="add-to-cart1 space" (click)="removeFromCart(product._id)" *ngIf="isInCart(product._id)">Remove From Cart</button>
+
+        <button class="more" (click)="handleSingle(product?._id)">More</button>
+      </div>
+    </div>
+  </div>
+<div class="alert alert-danger" *ngIf="!products.length" style="padding: 20px 30px; border-radius: 5px; color: black;">There Is No Data</div>
+
+</div>
+

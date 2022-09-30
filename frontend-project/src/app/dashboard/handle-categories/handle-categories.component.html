@@ -1,0 +1,17 @@
+<div class="body">
+
+  <div id="container">
+    <div class="form-wrap">
+      <h1 *ngIf="editType">Edit The Category</h1>
+      <h1 *ngIf="!editType">Create New Category</h1>
+      <form #editForm="ngForm" (ngSubmit)="handleSubmit(editForm)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" [(ngModel)]="model.name" required>
+        </div>
+        <button type="submit" *ngIf="editType">Edit</button>
+        <button type="submit" *ngIf="!editType">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

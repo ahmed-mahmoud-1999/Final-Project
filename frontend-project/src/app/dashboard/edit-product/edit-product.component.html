@@ -1,0 +1,37 @@
+<div class="body">
+
+  <div id="container">
+    <div class="form-wrap">
+      <h1 *ngIf="editType">Edit The Product</h1>
+      <h1 *ngIf="!editType">Create New Product</h1>
+      <form #editForm="ngForm" (ngSubmit)="handleSubmit(editForm)">
+        <div class="form-group">
+          <label for="full-title">Title</label>
+          <input type="text" id="full-title" name="title"  [(ngModel)]="model.title" required>
+        </div>
+        <div class="form-group">
+          <label for="desc">desc</label>
+          <input type="text" id="desc" name="desc" [(ngModel)]="model.desc" required>
+        </div>
+        <div class="form-group">
+          <label for="orice">Price</label>
+          <input type="text" id="price" name="price" [(ngModel)]="model.price" required>
+        </div>
+        <div class="form-group">
+          <label for="stock">InStock</label>
+          <input type="text" id="stock" name="inStock" [(ngModel)]="model.inStock" required>
+        </div>
+        <div class="form-group">
+          <label for="cat">Categoies</label>
+          <input type="text" id="cat" name="category" [(ngModel)]="model.category">
+        </div>
+        <div class="form-group">
+          <label for="img">Image</label>
+          <input type="file" id="img" name="img" (change)="handleImg($event)" >
+        </div>
+        <button type="submit">Create</button>
+
+      </form>
+    </div>
+  </div>
+</div>

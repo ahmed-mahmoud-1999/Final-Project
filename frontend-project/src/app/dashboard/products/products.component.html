@@ -1,0 +1,24 @@
+<div class="cont">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>desc</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td>{{product._id}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.desc.substring(0, 60)}}<span *ngIf="product.desc.length > 60">...</span> </td>
+        <td>
+          <button (click)="handleDelete(product._id, i)">Delete</button>
+          <button (click)="handleEdit(product._id)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="handleCreate()">Create New Product</button>
+</div>
